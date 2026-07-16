@@ -32,12 +32,13 @@ def chat(messages):
     )
     return message.content[0].text
 
-add_user_message(messages, "How to become great AI Engineer? Give me a answer in 3 sentrences.")
-response = chat(messages)
-add_assistant_message(messages, response)
-print(response)
+while True:
+    user_input = input("Ask a question: ")
+    add_user_message(messages, user_input)
+    response = chat(messages)
+    add_assistant_message(messages, response)
+    print(response)
 
-add_user_message(messages, "Can you give me a more detailed answer in 5 sentences?")
-response = chat(messages)
-add_assistant_message(messages, response)
-print(response)
+    if input("Do you want to continue? (y/n): ").lower() != 'y':
+        print("Exiting the chat. Goodbye!")
+        break
